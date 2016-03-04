@@ -25,9 +25,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	public:
 		double a; //Using doubles as my numeric variable type in the entire program for precision consistancy
 		double b; 
-		void start() { a = clock(); return; } //Start stores current clock time
-		void stop() { b = (clock() - a) / (double)CLOCKS_PER_SEC; return; } //Stop stores the difference between current clock time and start clock time and then devides it by clock ticks per second
-		double read() { return b; } //Read returns most recent stored time
+		void reset() { a = clock(); return; } //Restart stores current clock time
+		double read() { return (clock() - a) / (double)CLOCKS_PER_SEC; } //Return ticks passed since last reset command and devide by ticks per second
 	};
 
 	class vector { //My vector class is for position and direction vectors. I am using position vectors instead of points because of the need for compatible classes in certian intersection algoritms
