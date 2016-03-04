@@ -2,7 +2,7 @@
 #ifndef HEADER_H_
 #define HEADER_H_
 
-//Includes and Defines
+//----------------------------------------------Includes and Defines---------------------------------------------
 #include <iostream>
 #include <sstream> //For str( x )
 #include <ctime> //For Timer
@@ -12,7 +12,13 @@
 
 using namespace std;
 
-//Classes
+//-----------------------------------------------External Variables---------------------------------------------
+extern double intdist;
+
+//------------------------------------------------Function Headers----------------------------------------------
+void init();
+
+//----------------------------------------------------Classes----------------------------------------------------
 namespace vmath {
 
 	class timer {
@@ -162,11 +168,5 @@ namespace vmath {
 		vector intpoint;
 	};
 }
-
-//External Variables
-extern double intdist;
-
-//Function Headers
-void init();
 
 #endif
