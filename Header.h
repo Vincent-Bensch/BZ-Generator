@@ -148,25 +148,6 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		double length() { return sqrt(pow(end.i - start.i, 2) + pow(end.j - start.j, 2) + pow(end.k - start.k, 2)); } //Pythagrian theorem for the length of the linesegment
-
-		bool intersect(line i) { //This will be deleted as soon as I get to the next commit
-			if (!has_dir) {
-				ifline.direction = end.subtract(start);
-				ifline.location = end;
-				has_dir = true;
-			}
-			if (!ifline.intersect(i)) { return false; }
-			intpoint = ifline.intersection(i);
-			return ((start.i > intpoint.i > end.i) || (start.i <= intpoint.i <= end.i)) && ((start.j > intpoint.j > end.j) || (start.j <= intpoint.j <= end.j)) && ((start.k > intpoint.k > end.k) || (start.k <= intpoint.k <= end.k));
-		}
-
-		vector intersection(line i) { return intpoint; } //This will be deleted as soon as I get to the next commit
-
-	private: //This will be deleted as soon as I get to the next commit
-		line ifline;
-		bool has_dir = false;
-		vector intpoint;
-	};
 }
 
 #endif
