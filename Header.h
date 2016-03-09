@@ -33,7 +33,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	public:
 		double i, j, k; //The actual components of the vector
 
-		vector(double a, double b, double c); //Function header for vector populating
+		vector (double,double,double); //Function header for vector populating
 
 		double magnitude() { return sqrt(pow(i, 2) + pow(j, 2) + pow(k, 2)); } //Pythagrian theorem to get vector magnitude
 
@@ -89,7 +89,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 	};
 
-	vector::vector(double a, double b, double c) { i = a, j = b, k = c; return; } //Constructor for populating vector
+
 
 	class line { //Class for an enless line definded by a position and a direction vector
 	public:
