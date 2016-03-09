@@ -33,14 +33,13 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	public:
 		double i, j, k; //The actual components of the vector
 
-		void populate(double a, double b, double c) { i = a, j = b, k = c; return; } //So I don't have to use three lines every time I want to set a variable's values
+		vector(double a, double b, double c); //Function header for vector populating
 
 		double magnitude() { return sqrt(pow(i, 2) + pow(j, 2) + pow(k, 2)); } //Pythagrian theorem to get vector magnitude
 
 		vector normalize() { //Return a unit vector pointing the same direction as orignial vector, by deviding all components by magnitude
-			vector out;
 			double l = magnitude();
-			out.populate(
+			vector out(
 				i / l,
 				j / l,
 				k / l);
@@ -50,8 +49,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		double dot(vector in) { return i*in.i + j*in.j + k*in.k; } //a.dot(b) returns the dot product of a with b
 
 		vector cross(vector in) { // a.cross(b) returnes the cross poduct of a with b
-			vector out;
-			out.populate(
+			vector out(
 				j*in.k - k*in.j,
 				k*in.i - i*in.k,
 				i*in.j - j*in.i);
@@ -59,8 +57,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		vector add(vector in) { //a.add(b) returns vector a plus vector b
-			vector out;
-			out.populate(
+			vector out(
 				i + in.i,
 				j + in.j,
 				k + in.k);
@@ -68,8 +65,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		vector subtract(vector in) { //a.subtract(b) returns vector a minus vector b
-			vector out;
-			out.populate(
+			vector out(
 				i - in.i,
 				j - in.j,
 				k - in.k);
@@ -77,8 +73,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		vector multiply(double d) { //a.multiply(b) returns vector a with all elements multiplied by double b
-			vector out;
-			out.populate(
+			vector out(
 				i*d,
 				j*d,
 				k*d);
@@ -86,14 +81,15 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		vector divide(double d) { //a.devide(b) returns vector a will all elements devided by double b
-			vector out;
-			out.populate(
+			vector out(
 				i / d,
 				j / d,
 				k / d);
 			return out;
 		}
 	};
+
+	vector::vector(double a, double b, double c) { i = a, j = b, k = c; return; } //Constructor for populating vector
 
 	class line { //Class for an enless line definded by a position and a direction vector
 	public:
@@ -114,8 +110,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		vector a, b; //Position vectors for the start and end points
 
 		vector midpoint() { //Retrun a position vector marking the midpoint of the linesegment
-			vector out;
-			out.populate(
+			vector out(
 				(a.i + b.i) / 2,
 				(a.j + b.j) / 2,
 				(a.k + b.k) / 2);
