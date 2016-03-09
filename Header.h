@@ -100,14 +100,6 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		vector direction; //Vector denoting direction of the line
 		vector location; //Position vector marking a point on the line
 
-		bool intersect(line i) { //Do the two lines intersect
-			vector lcl = direction.cross(i.direction); 
-			return abs(i.location.subtract(direction).dot(lcl) / lcl.magnitude()) <= intdist;
-		} //No idea how the algoritm works, I am going to need to look into it
-
-		vector intersection(line v) { //Where do two lines that intersect intersect
-			return location.add(direction.multiply((direction.cross(v.direction).i) / (v.location.subtract(location).cross(v.direction).i)));
-		} //No idea how the algoritm works, I am going to need to look into it
 	};
 
 	class plane { //Class for a plane defined by a position and a normal vector
@@ -115,21 +107,6 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		vector location; //Position vector marking a point on the plane
 		vector normal; //Vector denoting the normal direction of the plane
 
-		bool intersect(plane i) { return normal.dot(i.normal) == 1; } //If the normal vectors of two planes intersect, the planes intersect
-
-		line intersection(plane i) { //Where do the planes intersect?
-			line o;
-			normal = normal.normalize();
-			i.normal = i.normal.normalize();
-			o.direction = normal.cross(i.normal);
-
-			double h1 = normal.dot(location);
-			double h2 = i.normal.dot(i.location);
-			double p1 = normal.dot(i.normal);
-			double p2 = 1 - pow(p1, 2);
-
-			o.location = normal.multiply((h1 - h2*p1) / p2).add(i.normal.multiply((h2 - h1*p1) / p2));
-			return o; //I have no idea how this works. I need to look into it.
 		}
 	};
 
