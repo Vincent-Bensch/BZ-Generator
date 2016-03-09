@@ -1,1 +1,1 @@
-# BZ-Generator
+Hi, my name is Vincent Bensch and you are looking at my Brillouin Zone generator. Incase you don't know, Brillouin zones are reciprical structures that have applications in Material Science. In the summer of 2014, I was contracted to write software to generate 3d models of them for Paul Evans of the University of Wisconsin Madison. My attemps failed and the code was all but lost. I took the project up again in the spring of 2016 without any connection to the UW, because I couldn't stand knowing that this challange had defeated me.
