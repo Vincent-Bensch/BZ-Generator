@@ -22,9 +22,11 @@ void init(); //Seting global variable values
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
 
 	class timer {
-	public:
+	private:
 		double a; //Using doubles as my numeric variable type in the entire program for precision consistancy
 		double b;
+
+	public:
 		void reset() { a = clock(); return; } //Restart stores current clock time
 		double read() { return (clock() - a) / (double)CLOCKS_PER_SEC; } //Return ticks passed since last reset command and devide by ticks per second
 	};
