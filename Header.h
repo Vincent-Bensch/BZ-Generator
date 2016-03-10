@@ -108,17 +108,17 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 
 	class linesegment { //Class for a linesegment defined by a start and an end point
 	public:
-		vector a, b; //Position vectors for the start and end points
+		vector start, end; //Position vectors for the start and end points
 
 		vector midpoint() { //Retrun a position vector marking the midpoint of the linesegment
 			vector out(
-				(a.i + b.i) / 2,
-				(a.j + b.j) / 2,
-				(a.k + b.k) / 2);
+				(start.i + end.i) / 2,
+				(start.j + end.j) / 2,
+				(start.k + end.k) / 2);
 			return out;
 		}
 
-		double length() { return sqrt(pow(b.i - a.i, 2) + pow(b.j - a.j, 2) + pow(b.k - a.k, 2)); } //Pythagrian theorem for the length of the linesegment
+		double length() { return sqrt(pow(end.i - start.i, 2) + pow(end.j - start.j, 2) + pow(end.k - start.k, 2)); } //Pythagrian theorem for the length of the linesegment
 	};
 }
 
