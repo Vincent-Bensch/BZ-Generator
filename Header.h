@@ -90,7 +90,6 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	};
 
 
-
 	class line { //Class for an enless line definded by a position and a direction vector
 	public:
 		vector dir; //Vector denoting direction of the line
