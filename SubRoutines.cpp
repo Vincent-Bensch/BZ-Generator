@@ -4,7 +4,7 @@
 double intdist;
 
 vmath::vector::vector(double a, double b, double c) { i = a, j = b, k = c; } //Constructor for populating vector
-vmath::vector::vector() {}
+vmath::vector::vector() {} //Default constructor
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init() //Initializing global variables

@@ -35,8 +35,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	public:
 		double i, j, k; //The actual components of the vector
 
-		vector (double,double,double); //Function header for vector populating
-		vector();
+		vector (double,double,double); //Function header for vector populating constructor
+		vector(); //Function header for default constructor
 
 		double magnitude() { return sqrt(pow(i, 2) + pow(j, 2) + pow(k, 2)); } //Pythagrian theorem to get vector magnitude
 
