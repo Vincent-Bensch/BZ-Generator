@@ -78,7 +78,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 				k*d);
 		}
 
-		vector divide(double d) { //a.devide(b) returns vector a will all elements devided by double b
+		vector devide(double d) { //a.divide(b) returns vector a will all elements divided by double b
 			return vector(
 				i / d,
 				j / d,
