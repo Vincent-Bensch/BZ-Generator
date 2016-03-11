@@ -3,6 +3,7 @@
 //---------------------------------------------------Variables--------------------------------------------------
 double intdist;
 
+//--------------------------------------------------Constructors------------------------------------------------
 vmath::vector::vector(double a, double b, double c) { i = a, j = b, k = c; } //Constructor for populating vector
 vmath::vector::vector() {} //Default constructor for vector
 
