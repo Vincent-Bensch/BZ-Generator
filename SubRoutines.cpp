@@ -10,6 +10,9 @@ vmath::vector::vector() {} //Default constructor for vector
 vmath::plane::plane(vector a, vector b) { norm = a, loc = b, r = norm.dot(loc); } //Constructor for populating plane and calculating r
 vmath::plane::plane() {} //Default constructor for plane
 
+vmath::line::line(vector a, vector b) { dir = a, loc = b; } //Constructor for populating line
+vmath::line::line() {} //Default constructor for line
+
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init() //Initializing global variables
 {

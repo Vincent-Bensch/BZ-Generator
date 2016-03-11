@@ -92,6 +92,9 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		vector dir; //Vector denoting direction of the line
 		vector loc; //Position vector marking a point on the line
 
+		line(vector, vector); //Function header for line populating
+		line(); //Function header for default constructor
+
 	};
 
 	class plane { //Class for a plane defined by a position and a normal vector 
