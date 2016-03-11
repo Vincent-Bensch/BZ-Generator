@@ -106,6 +106,43 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		plane(vector, vector); //Function header for plane populating and r calculating constructor
 		plane(); //Function header for default constructor
 
+		bool intersect(plane in) { return !(norm.dot(in.norm) == (norm.magnitude() * in.norm.magnitude())); } //If the normal vectos are paralell the planes do not intersect
+
+		line intersection(plane in) { //Returns line of intersection between two lines see maths folder for details
+			if (norm.i != 0 && norm.j != 0 && in.norm.i != 0 && in.norm.j != 0) {
+				return line(norm.cross(in.norm), xintersection(in));
+			}
+
+			if (norm.i != 0 && norm.k != 0 && in.norm.i != 0 && in.norm.k != 0) {
+				return line(norm.cross(in.norm), yintersection(in));
+			}
+
+			if (norm.j != 0 && norm.k != 0 && in.norm.j != 0 && in.norm.k != 0) {
+				return line(norm.cross(in.norm), zintersection(in));
+			}
+		}
+
+	private:
+		vector xintersection(plane in) { //Part of plane-plane intersection algorithem
+			return vector(
+				((in.norm.j*r - norm.j*in.r) / (norm.i*in.norm.j - in.norm.i*norm.j)),
+				((in.norm.i*r - norm.i*in.r) / (norm.i*in.norm.j - in.norm.i*norm.j)),
+				0);
+		}
+
+		vector yintersection(plane in) { //Part of plane-plane intersection algorithem
+			return vector(
+				((in.norm.k*r - norm.k*in.r) / (norm.i*in.norm.k - in.norm.i*norm.k)),
+				0,
+				((in.norm.i*r - norm.i*in.r) / (norm.i*in.norm.k - in.norm.i*norm.k)));
+		}
+
+		vector zintersection(plane in) { //Part of plane-plane intersection algorithem
+			return vector(
+				0,
+				((in.norm.k*r - norm.k*in.r) / (norm.j*in.norm.k - in.norm.j*norm.k)),
+				((in.norm.j*r - norm.j*in.r) / (norm.j*in.norm.k - in.norm.j*norm.k)));
+		}
 	};
 
 	class linesegment { //Class for a linesegment defined by a start and an end point
