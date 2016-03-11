@@ -42,53 +42,47 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 
 		vector normalize() { //Return a unit vector pointing the same direction as orignial vector, by deviding all components by magnitude
 			double l = magnitude();
-			vector out(
+			return vector(
 				i / l,
 				j / l,
 				k / l);
-			return out;
 		}
 
 		double dot(vector in) { return i*in.i + j*in.j + k*in.k; } //a.dot(b) returns the dot product of a with b
 
 		vector cross(vector in) { // a.cross(b) returnes the cross poduct of a with b
-			vector out(
+			return vector(
 				j*in.k - k*in.j,
 				k*in.i - i*in.k,
 				i*in.j - j*in.i);
-			return out;
 		}
 
 		vector add(vector in) { //a.add(b) returns vector a plus vector b
-			vector out(
+			return vector(
 				i + in.i,
 				j + in.j,
 				k + in.k);
-			return out;
 		}
 
 		vector subtract(vector in) { //a.subtract(b) returns vector a minus vector b
-			vector out(
+			return vector(
 				i - in.i,
 				j - in.j,
 				k - in.k);
-			return out;
 		}
 
 		vector multiply(double d) { //a.multiply(b) returns vector a with all elements multiplied by double b
-			vector out(
+			return vector(
 				i*d,
 				j*d,
 				k*d);
-			return out;
 		}
 
 		vector divide(double d) { //a.devide(b) returns vector a will all elements devided by double b
-			vector out(
+			return vector(
 				i / d,
 				j / d,
 				k / d);
-			return out;
 		}
 	};
 
@@ -112,11 +106,10 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		vector start, end; //Position vectors for the start and end points
 
 		vector midpoint() { //Retrun a position vector marking the midpoint of the linesegment
-			vector out(
+			return vector(
 				(start.i + end.i) / 2,
 				(start.j + end.j) / 2,
 				(start.k + end.k) / 2);
-			return out;
 		}
 
 		double length() { return sqrt(pow(end.i - start.i, 2) + pow(end.j - start.j, 2) + pow(end.k - start.k, 2)); } //Pythagrian theorem for the length of the linesegment
