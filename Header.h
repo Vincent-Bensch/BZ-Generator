@@ -94,10 +94,14 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 
 	};
 
-	class plane { //Class for a plane defined by a position and a normal vector
+	class plane { //Class for a plane defined by a position and a normal vector 
 	public:
 		vector norm; //Vector denoting the normal direction of the plane
 		vector loc; //Position vector marking a point on the plane
+		double r; //R is used in Plane-Plane intersections
+
+		plane(vector, vector); //Function header for plane populating and r calculating constructor
+		plane(); //Function header for default constructor
 
 	};
 
