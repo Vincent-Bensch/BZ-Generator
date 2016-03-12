@@ -86,7 +86,6 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 	};
 
-
 	class line { //Class for an enless line definded by a position and a direction vector
 	public:
 		vector dir; //Vector denoting direction of the line
@@ -95,6 +94,22 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		line(vector, vector); //Function header for line populating
 		line(); //Function header for default constructor
 
+		bool intersect(line in) { //Determines if two lines intersect, see maths folder for details
+			ta = (in.dir.i*(loc.j - in.loc.j) - in.dir.j*(loc.i - in.loc.i)) / (dir.i*in.dir.j - in.dir.i*dir.j);
+			tb = (dir.i*(loc.j - in.loc.j) - dir.j*(loc.i - in.loc.i)) / (dir.i*in.dir.j - in.dir.i*dir.j);
+			return ((loc.k + ta*dir.k) == (in.loc.k + tb*in.dir.k));
+		}
+
+		vector intersection(line in) { //Finds the intersection point for two lines, see maths folder for details
+			return vector(
+				loc.i + ta*dir.i,
+				loc.j + ta*dir.j,
+				loc.k + ta*dir.k);
+		}
+
+	private:
+		static double ta; //These two variables are calculated to determine if ther is an intersection, but are also needed to calculate the intersection point
+		static double tb;
 	};
 
 	class plane { //Class for a plane defined by a position and a normal vector 
