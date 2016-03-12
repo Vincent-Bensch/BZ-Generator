@@ -20,7 +20,7 @@ void init(); //Seting global variable values
 
 //----------------------------------------------------Classes----------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
-	class linesegment;
+	class linesegment; //Declaring linesegment class here so that plane class can access it before definition
 
 	class timer {
 	private:
