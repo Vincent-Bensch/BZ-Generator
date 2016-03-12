@@ -20,6 +20,7 @@ void init(); //Seting global variable values
 
 //----------------------------------------------------Classes----------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
+	class linesegment;
 
 	class timer {
 	private:
@@ -137,7 +138,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 			}
 		}
 
-		bool intersect(linesegment in) { return (norm.dot(in.start.subtract(loc)) * norm.dot(in.end.subtract(loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
+		inline bool intersect(linesegment in); //Only declared here to avoid circular errors
 
 	private:
 		vector xintersection(plane in) { //Part of plane-plane intersection algorithem
@@ -177,6 +178,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		
 		bool intersect(plane in) { return (in.norm.dot(start.subtract(in.loc)) * in.norm.dot(end.subtract(in.loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
 	};
+
+	bool plane::intersect(linesegment in) { return (norm.dot(in.start.subtract(loc)) * norm.dot(in.end.subtract(loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
 }
 
 #endif
