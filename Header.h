@@ -6,6 +6,7 @@
 #include <iostream> //For obvious reasons
 #include <sstream> //For str( x )
 #include <ctime> //For Timer
+#include <vector> //For lists
 
 #define str( x ) dynamic_cast< std::ostringstream & >( \
 	(std::ostringstream() << std::dec << x)).str() //No idea how this works, got it off stackexchange
@@ -181,5 +182,12 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 
 	bool plane::intersect(linesegment in) { return (norm.dot(in.start.subtract(loc)) * norm.dot(in.end.subtract(loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
 }
+
+//----------------------------------------------Custom Variable Types--------------------------------------------
+typedef vector<vmath::plane> planelist;
+typedef vector<vmath::line> linelist;
+typedef vector<vmath::linesegment> linesegmentlist;
+typedef vector<vmath::vector> vectorlist;
+
 
 #endif
