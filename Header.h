@@ -137,6 +137,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 			}
 		}
 
+		bool intersect(linesegment in) { return (norm.dot(in.start.subtract(loc)) * norm.dot(in.end.subtract(loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
+
 	private:
 		vector xintersection(plane in) { //Part of plane-plane intersection algorithem
 			return vector(
@@ -172,6 +174,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		double length() { return sqrt(pow(end.i - start.i, 2) + pow(end.j - start.j, 2) + pow(end.k - start.k, 2)); } //Pythagrian theorem for the length of the linesegment
+		
+		bool intersect(plane in) { return (in.norm.dot(start.subtract(in.loc)) * in.norm.dot(end.subtract(in.loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
 	};
 }
 
