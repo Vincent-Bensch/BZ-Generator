@@ -15,10 +15,8 @@ vmath::line::line(vector a, vector b) { dir = a, loc = b; } //Constructor for po
 vmath::line::line() {} //Default constructor for line
 
 //--------------------------------------------------Sub Routines------------------------------------------------
-void init() //Initializing global variables
-{
+void init(){ //Initializing global variables
 	intdist = 0.0001;
-	return;
 }
 
 string timestamp() { //Returns YYYY-MM-DD hh:mm:ss
@@ -41,5 +39,4 @@ void report(string in, bool file = true, bool screen = true) { //Timestapms mess
 	if (screen) { //If screen print is requested
 		cout << out << endl; //Write message to screen
 	}
-	return;
 }
