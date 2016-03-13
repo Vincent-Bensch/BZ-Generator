@@ -5,6 +5,7 @@
 //----------------------------------------------Includes and Defines---------------------------------------------
 #include <iostream> //For obvious reasons
 #include <sstream> //For str( x )
+#include <fstream> //For file io
 #include <ctime> //For Timer
 #include <vector> //For lists
 
@@ -15,9 +16,12 @@ using namespace std; //I'm lazy about typing std:: everywhere
 
 //-----------------------------------------------External Variables---------------------------------------------
 extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
+extern string logloc; //Sting holding the filename of the log file
 
 //------------------------------------------------Function Headers----------------------------------------------
 void init(); //Seting global variable values
+string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
+void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
 
 //----------------------------------------------------Classes----------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
