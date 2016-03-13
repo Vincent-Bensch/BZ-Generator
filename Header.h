@@ -188,10 +188,9 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 }
 
 //----------------------------------------------Custom Variable Types--------------------------------------------
-typedef vector<vmath::plane> planelist;
-typedef vector<vmath::line> linelist;
-typedef vector<vmath::linesegment> linesegmentlist;
-typedef vector<vmath::vector> vectorlist;
-
+typedef vector<vmath::plane> planelist; //List of planes
+typedef vector<vmath::line> linelist; //List of lines
+typedef vector<vmath::linesegment> linesegmentlist; //List of linesegments
+typedef vector<vmath::vector> vectorlist; //List of vectors
 
 #endif
