@@ -40,3 +40,33 @@ void report(string in, bool file = true, bool screen = true) { //Timestapms mess
 		cout << out << endl; //Write message to screen
 	}
 }
+
+vectorlist makepolygon(linesegmentlist in) { //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
+	vectorlist out; //Create vectorlist for output
+	out.push_back(in[0].start); //Asign the start of the first linesegment to the begining of the output list
+	vmath::vector endpoint = in[0].start; //Hold the end of the first linesegment in a buffer
+	in.erase(in.begin()); //Remove the first linesegment from the input list
+
+	while (in.size() != 0) { //While there are still linesegments in the input list
+		for (linesegmentlist::size_type i = 0; i != in.size(); i++) { //Iterate through the list of linesegments
+			if (in[i].start.equals(out[out.size() - 1])) { //If the start point of the current linesegment is equal to the last point of the output list
+				out.push_back(in[i].end); //Add the endpoint of the cureent linesegment to the output list
+				in.erase(in.begin() + i); //Delete current linesegment from input list
+				break; //Restart the for loop
+			}
+
+			if (in[i].end.equals(out[out.size() - 1])) { //If the start point of the current linesegment is equal to the last point of the output list
+				out.push_back(in[i].start); //Add the endpoint of the cureent linesegment to the output list
+				in.erase(in.begin() + i); //Delete current linesegment from input list
+				break; //Restart the for loop
+			}
+		}
+	}
+
+	if (endpoint.equals(out[out.size() - 1])) { //The buffered endpoint should be equal to the last point in the output list
+		vectorlist e; //If not create an empty list
+		return e; //And then return it
+	}
+
+	return out; //Return output list
+}
