@@ -44,6 +44,13 @@ void report(string in, bool file = true, bool screen = true) { //Timestapms mess
 	}
 }
 
+linesegmentlist makelinesegments(vectorlist in) {
+	linesegmentlist out;
+	vmath::vector orgin(0, 0, 0);
+	for (vectorlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::linesegment(orgin,in[i])); }
+	return out;
+}
+
 planelist makebisectorplanes(linesegmentlist in) { //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
 	planelist out; //Create output list
 	for (linesegmentlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::plane(in[i].end.subtract(in[i].start), in[i].midpoint())); } //For all line segments in input list, make plane using start-end as normal and midpoint as point
