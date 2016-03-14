@@ -14,10 +14,6 @@ using namespace std; //I'm lazy about typing std:: everywhere
 #define str( x ) dynamic_cast< ostringstream & >( \
 	(ostringstream() << dec << x)).str() //No idea how this works, got it off stackexchange
 
-//-----------------------------------------------External Variables---------------------------------------------
-extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
-extern string logloc; //Sting holding the filename of the log file
-
 //----------------------------------------------------Classes----------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
 	class linesegment; //Declaring linesegment class here so that plane class can access it before definition
@@ -198,6 +194,11 @@ typedef vector<vmath::plane> planelist; //List of planes
 typedef vector<vmath::line> linelist; //List of lines
 typedef vector<vmath::linesegment> linesegmentlist; //List of linesegments
 typedef vector<vmath::vector> vectorlist; //List of vectors
+
+//-----------------------------------------------External Variables---------------------------------------------
+extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
+extern string logloc; //Sting holding the filename of the log file
+extern vmath::vector origin; //Vector at 0,0,0
 
 //--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Seting global variable values

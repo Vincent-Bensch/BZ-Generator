@@ -3,8 +3,7 @@
 //--------------------------------------------------Sub Routines------------------------------------------------
 linesegmentlist makelinesegments(vectorlist in) {
 	linesegmentlist out;
-	vmath::vector orgin(0, 0, 0);
-	for (vectorlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::linesegment(orgin, in[i])); }
+	for (vectorlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::linesegment(origin, in[i])); }
 	return out;
 }
 

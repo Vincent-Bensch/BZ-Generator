@@ -3,6 +3,7 @@
 //---------------------------------------------------Variables--------------------------------------------------
 double intdist;
 string logloc;
+vmath::vector origin(0, 0, 0); //Vector at 0,0,0
 
 //--------------------------------------------------Constructors------------------------------------------------
 vmath::vector::vector(double a, double b, double c) { i = a, j = b, k = c; } //Constructor for populating vector
