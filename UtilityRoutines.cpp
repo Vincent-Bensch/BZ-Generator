@@ -51,3 +51,12 @@ int identifyzone(vmath::vector in, planelist planes) { //Identify brillouin zone
 	for (planelist::size_type i = 0; i != planes.size(); i++) { if (segment.intersect(planes[i])) { out++; } } //While iterating over planes, if current plane intersects segment, increment zone by 1
 	return out; //Return zone number
 }
+
+vectorlist removeorigin(vectorlist in) { //Remove instances origin from list of vectors
+	for (vectorlist::size_type i = 0; i != in.size(); i++) { //Iterating over input list
+		if (in[i].equals(origin)) { //If current vector is the origin
+			in.erase(in.begin() + i); //Remove it from the list
+		}
+	}
+	return in; //Return input list
+}
