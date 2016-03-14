@@ -18,11 +18,6 @@ using namespace std; //I'm lazy about typing std:: everywhere
 extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
 extern string logloc; //Sting holding the filename of the log file
 
-//------------------------------------------------Function Headers----------------------------------------------
-void init(); //Seting global variable values
-string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
-void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
-
 //----------------------------------------------------Classes----------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistant as I like!
 	class linesegment; //Declaring linesegment class here so that plane class can access it before definition
@@ -200,5 +195,11 @@ typedef vector<vmath::plane> planelist; //List of planes
 typedef vector<vmath::line> linelist; //List of lines
 typedef vector<vmath::linesegment> linesegmentlist; //List of linesegments
 typedef vector<vmath::vector> vectorlist; //List of vectors
+
+//------------------------------------------------Function Headers----------------------------------------------
+void init(); //Seting global variable values
+string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
+void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
+vectorlist makepolygon(linesegmentlist in);
 
 #endif
