@@ -9,10 +9,10 @@
 #include <ctime> //For Timer
 #include <vector> //For lists
 
-#define str( x ) dynamic_cast< std::ostringstream & >( \
-	(std::ostringstream() << std::dec << x)).str() //No idea how this works, got it off stackexchange
-
 using namespace std; //I'm lazy about typing std:: everywhere
+
+#define str( x ) dynamic_cast< ostringstream & >( \
+	(ostringstream() << dec << x)).str() //No idea how this works, got it off stackexchange
 
 //-----------------------------------------------External Variables---------------------------------------------
 extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
