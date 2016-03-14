@@ -41,6 +41,12 @@ void report(string in, bool file = true, bool screen = true) { //Timestapms mess
 	}
 }
 
+planelist makebisectorplanes(linesegmentlist in) { //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
+	planelist out; //Create output list
+	for (linesegmentlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::plane(in[i].end.subtract(in[i].start), in[i].midpoint())); } //For all line segments in input list, make plane using start-end as normal and midpoint as point
+	return out; //Return output list
+}
+
 vectorlist makepolygon(linesegmentlist in) { //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
 	vectorlist out; //Create vectorlist for output
 	out.push_back(in[0].start); //Asign the start of the first linesegment to the begining of the output list
