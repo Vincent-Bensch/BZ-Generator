@@ -18,7 +18,10 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SubRoutines.cpp">
+    <ClCompile Include="UtilityRoutines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrillouinRoutines.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

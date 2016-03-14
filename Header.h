@@ -199,10 +199,12 @@ typedef vector<vmath::line> linelist; //List of lines
 typedef vector<vmath::linesegment> linesegmentlist; //List of linesegments
 typedef vector<vmath::vector> vectorlist; //List of vectors
 
-//------------------------------------------------Function Headers----------------------------------------------
+//--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Seting global variable values
 string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
 void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
+
+//-------------------------------------------------Brillouin Headers----------------------------------------------
 linesegmentlist makelinesegments(vectorlist in); //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
 planelist makebisectorplanes(linesegmentlist in); //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
 vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
