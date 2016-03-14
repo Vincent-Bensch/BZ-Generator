@@ -91,7 +91,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 				k / d);
 		}
 
-		bool equals(vector in) { return (in.i == i && in.j == j && in.k == k); }
+		bool equals(vector in) { return (in.i == i && in.j == j && in.k == k); } //Compares all elements to determine if two vectors are identical
 	};
 
 	class line { //Class for an enless line definded by a position and a direction vector
@@ -115,7 +115,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 				loc.k + ta*dir.k);
 		}
 
-		bool equals(line in) { return (dir.equals(in.dir) && loc.equals(in.loc)); }
+		bool equals(line in) { return (dir.equals(in.dir) && loc.equals(in.loc)); } //Compares all elements to determine if two lines are identical
 
 	private:
 		static double ta; //These two variables are calculated to determine if ther is an intersection, but are also needed to calculate the intersection point
@@ -149,7 +149,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 
 		inline bool intersect(linesegment in); //Only declared here to avoid circular errors
 
-		bool equals(plane in) { return(norm.equals(in.norm) && loc.equals(in.loc)); }
+		bool equals(plane in) { return(norm.equals(in.norm) && loc.equals(in.loc)); } //Compares all elements to determine if two planes are identical
 
 	private:
 		vector xintersection(plane in) { //Part of plane-plane intersection algorithem
@@ -189,7 +189,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		
 		bool intersect(plane in) { return (in.norm.dot(start.subtract(in.loc)) * in.norm.dot(end.subtract(in.loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
 	
-		bool equals(linesegment in) { return((start.equals(in.start) && end.equals(in.end)) || (start.equals(in.end) && end.equals(in.start))); }
+		bool equals(linesegment in) { return((start.equals(in.start) && end.equals(in.end)) || (start.equals(in.end) && end.equals(in.start))); } //Compares all elements to determine if two line segments are identical
 	};
 
 	bool plane::intersect(linesegment in) { return (norm.dot(in.start.subtract(loc)) * norm.dot(in.end.subtract(loc))) <= 0; } //Tests for a intersection between a line segment and a plane. See maths folder for details
