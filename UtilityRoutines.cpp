@@ -44,3 +44,10 @@ void report(string in, bool file = true, bool screen = true) { //Timestapms mess
 		cout << out << endl; //Write message to screen
 	}
 }
+
+int identifyzone(vmath::vector in, planelist planes) { //Identify brillouin zone a point bellongs to
+	int out = 0; //Starting in zone 0, because all my points are going to be on the edge of the zone, artificialy inflating the zone count
+	vmath::linesegment segment(origin, in); //Create linesegment from the origin to the point being tested
+	for (planelist::size_type i = 0; i != planes.size(); i++) { if (segment.intersect(planes[i])) { out++; } } //While iterating over planes, if current plane intersects segment, increment zone by 1
+	return out; //Return zone number
+}

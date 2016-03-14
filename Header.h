@@ -204,6 +204,7 @@ extern vmath::vector origin; //Vector at 0,0,0
 void init(); //Seting global variable values
 string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
 void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
+int identifyzone(vmath::vector in, planelist planes); //Identify brillouin zone a point bellongs to
 
 //-------------------------------------------------Brillouin Headers----------------------------------------------
 linesegmentlist makelinesegments(vectorlist in); //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
