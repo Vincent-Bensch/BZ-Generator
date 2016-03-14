@@ -173,6 +173,9 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 	public:
 		vector start, end; //Position vectors for the start and end points
 
+		linesegment(vector, vector); //Function header for linesegment populating constructor
+		linesegment(); //Function header for default constructor
+
 		vector midpoint() { //Retrun a position vector marking the midpoint of the linesegment
 			return vector(
 				(start.i + end.i) / 2,

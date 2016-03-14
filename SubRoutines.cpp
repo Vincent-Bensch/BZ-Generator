@@ -14,6 +14,9 @@ vmath::plane::plane() {} //Default constructor for plane
 vmath::line::line(vector a, vector b) { dir = a, loc = b; } //Constructor for populating line
 vmath::line::line() {} //Default constructor for line
 
+vmath::linesegment::linesegment(vector a, vector b) { start = a, end = b; } //Function header for linesegment populating constructor
+vmath::linesegment::linesegment() {} //Function header for default constructor
+
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init(){ //Initializing global variables
 	intdist = 0.0001;
