@@ -1,6 +1,18 @@
 #include "Header.h"
 
 //--------------------------------------------------Sub Routines------------------------------------------------
+vectorlist makePClattice(double max, double step) { //Creates a Primative Cube lattice
+	vectorlist out; //Create output list
+	for (double x = -1 * max; x <= max; x = x + step) { //Passing from -max to max using step
+		for (double y = -1 * max; y <= max; y = y + step) {
+			for (double z = -1 * max; z <= max; z = z + step) {
+				if (x != 0 && y != 0 && z != 0) { out.push_back(vmath::vector(x, y, z)); } //If current point isn't origin, write it to output list
+			}
+		}
+	}
+	return out; //Return output list
+}
+
 linesegmentlist makelinesegments(vectorlist in) {
 	linesegmentlist out;
 	for (vectorlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::linesegment(origin, in[i])); }
