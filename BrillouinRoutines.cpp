@@ -48,6 +48,27 @@ vectorlist makeBCClattice(double max, double step) { //Creates a Body Centerd Cu
 	}
 	return removeorigin(cash); //Return output list - origin
 }
+
+vectorlist makeFCClattice(double max, double step) { //Creates a Face Centered Cubic lattice
+	vectorlist cash;
+	double halfstep = step / 2;
+
+	for (double x = -1 * max; x <= max; x = x + step) { //Passing from -max to max using step
+		for (double y = -1 * max; y <= max; y = y + step) {
+			for (double z = -1 * max; z <= max; z = z + step) { 
+				cash.push_back(vmath::vector( //Adds current point to output cash. The point is thn modified to get the other points that make up a FCC lattice
+					x,
+					y,
+					z));
+
+				cash.push_back(vmath::vector(
+					x + halfstep,
+					y + halfstep,
+					z + halfstep));
+			}
+		}
+	}
+	return removeorigin(cash); //Return output list - origin
 }
 
 linesegmentlist makelinesegmentsfromlattice(vectorlist in) {

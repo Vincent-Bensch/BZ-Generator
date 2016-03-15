@@ -212,6 +212,7 @@ vectorlist removeorigin(vectorlist in); //Remove instances origin from list of v
 //-------------------------------------------------Brillouin Headers----------------------------------------------
 vectorlist makePClattice(double max, double step); //Creates a Primative Cube lattice
 vectorlist makeBCClattice(double max, double step); //Creates a Body Centerd Cubic lattice
+vectorlist makeFCClattice(double max, double step); //Creates a Face Centerd Cubic lattice
 linesegmentlist makelinesegmentsfromlattice(vectorlist in); //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
 planelist makebisectorplanes(linesegmentlist in); //Takes a list of linesegments, and outputs a list of planes bisecting those linesegments
 vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
