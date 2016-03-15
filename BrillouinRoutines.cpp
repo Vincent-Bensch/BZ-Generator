@@ -13,7 +13,7 @@ vectorlist makePClattice(double max, double step) { //Creates a Primative Cube l
 	return out; //Return output list
 }
 
-linesegmentlist makelinesegments(vectorlist in) {
+linesegmentlist makelinesegmentsfromlattice(vectorlist in) {
 	linesegmentlist out;
 	for (vectorlist::size_type i = 0; i != in.size(); i++) { out.push_back(vmath::linesegment(origin, in[i])); }
 	return out;
