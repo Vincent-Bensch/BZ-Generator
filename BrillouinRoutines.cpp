@@ -2,11 +2,15 @@
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 vectorlist makePClattice(double max, double step) { //Creates a Primative Cube lattice
-	vectorlist out; //Create output list
+	vectorlist cash; //Creates output list
+
 	for (double x = -1 * max; x <= max; x = x + step) { //Passing from -max to max using step
 		for (double y = -1 * max; y <= max; y = y + step) {
 			for (double z = -1 * max; z <= max; z = z + step) {
-				if (x != 0 && y != 0 && z != 0) { out.push_back(vmath::vector(x, y, z)); } //If current point isn't origin, write it to output list
+				cash.push_back(vmath::vector( //Adds current point to output cash
+					x,
+					y,
+					z));
 			}
 		}
 	}
