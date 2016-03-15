@@ -14,7 +14,8 @@ vectorlist makePClattice(double max, double step) { //Creates a Primative Cube l
 			}
 		}
 	}
-	return out; //Return output list
+	return removeorigin(cash); //Return output list - origin
+}
 }
 
 linesegmentlist makelinesegmentsfromlattice(vectorlist in) {
