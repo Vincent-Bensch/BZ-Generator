@@ -83,6 +83,17 @@ planelist makebisectorplanes(linesegmentlist in) { //Takes a list of line segmen
 	return out; //Return output list
 }
 
+linelistlist makelinesfromplanes(planelist in) { //Takes a list of planes and returns the lines formed by intersection of those planes grouped by plane
+	linelistlist out; //Output list
+	linelist temp; //Temporary storage for each plane
+	for (planelist::size_type i = 0; i != in.size(); i++) { //For every plane in the input list
+		for (planelist::size_type j = 0; j != in.size(); j++) { if (i != j&&!in[i].intersect(in[j])) { temp.push_back(in[i].intersection(in[j])); }} //Store the intersection with every other intersection in temp
+		out.push_back(temp); //Add temp to output list
+		temp.clear(); //Clear temp
+	}
+	return out; //Return output list
+}
+
 vectorlist makepolygon(linesegmentlist in) { //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
 	vectorlist out; //Create vectorlist for output
 	out.push_back(in[0].start); //Assign the start of the first line segment to the beginning of the output list

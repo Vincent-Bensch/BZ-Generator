@@ -196,6 +196,7 @@ typedef vector<vmath::plane> planelist; //List of planes
 typedef vector<vmath::line> linelist; //List of lines
 typedef vector<vmath::linesegment> linesegmentlist; //List of line segments
 typedef vector<vmath::vector> vectorlist; //List of vectors
+typedef vector<linelist> linelistlist; //List of line lists, so they can be grouped by plane
 
 //-----------------------------------------------External Variables---------------------------------------------
 extern string logloc; //Sting holding the filename of the log file
@@ -215,6 +216,7 @@ vectorlist makeBCClattice(double max, double step); //Creates a Body Centered Cu
 vectorlist makeFCClattice(double max, double step); //Creates a Face Centered Cubic lattice
 linesegmentlist makelinesegmentsfromlattice(vectorlist in); //Takes a list of line segments, and outputs a list of planes bisecting those line segments
 planelist makebisectorplanes(linesegmentlist in); //Takes a list of line segments, and outputs a list of planes bisecting those line segments
+linelistlist makelinesfromplanes(planelist in); //Takes a list of planes and returns the lines formed by intersection of those planes grouped by plane
 vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
 
 #endif
