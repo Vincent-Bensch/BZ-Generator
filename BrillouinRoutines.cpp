@@ -16,6 +16,38 @@ vectorlist makePClattice(double max, double step) { //Creates a Primative Cube l
 	}
 	return removeorigin(cash); //Return output list - origin
 }
+
+vectorlist makeBCClattice(double max, double step) { //Creates a Body Centerd Cubic lattice
+	vectorlist cash;
+	double halfstep = step / 2;
+
+	for (double x = -1 * max; x <= max; x = x + step) { //Passing from -max to max using step
+		for (double y = -1 * max; y <= max; y = y + step) {
+			for (double z = -1 * max; z <= max; z = z + step) {
+				cash.push_back(vmath::vector( //Adds current point to output cash. The point is thn modified to get the other points that make up a BCC lattice
+					x,
+					y,
+					z));
+
+				cash.push_back(vmath::vector(
+					x + halfstep,
+					y + halfstep,
+					z));
+
+				cash.push_back(vmath::vector(
+					x + halfstep,
+					y,
+					z + halfstep));
+
+				cash.push_back(vmath::vector(
+					x,
+					y + halfstep,
+					z + halfstep));
+			}
+		}
+	}
+	return removeorigin(cash); //Return output list - origin
+}
 }
 
 linesegmentlist makelinesegmentsfromlattice(vectorlist in) {
