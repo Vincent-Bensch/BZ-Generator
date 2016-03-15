@@ -52,11 +52,9 @@ int identifyzone(vmath::vector in, planelist planes) { //Identify brillouin zone
 	return out; //Return zone number
 }
 
+bool isorigin(vmath::vector in) { return origin.equals(in); } //Is inputed vector origin?
+
 vectorlist removeorigin(vectorlist in) { //Remove instances origin from list of vectors
-	for (vectorlist::size_type i = 0; i != in.size(); i++) { //Iterating over input list
-		if (in[i].equals(origin)) { //If current vector is the origin
-			in.erase(in.begin() + i); //Remove it from the list
-		}
-	}
+	in.erase(remove_if(in.begin(), in.end(), isorigin), in.end()); //Remove all elements that cause isorigin to return true
 	return in; //Return input list
 }

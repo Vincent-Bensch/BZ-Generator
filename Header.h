@@ -8,6 +8,7 @@
 #include <fstream> //For file io
 #include <ctime> //For Timer
 #include <vector> //For lists
+#include <algorithm> //For seek and destroy
 
 using namespace std; //I'm lazy about typing std:: everywhere
 
@@ -205,6 +206,7 @@ void init(); //Seting global variable values
 string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
 void report(string in, bool file, bool screen); //Timestapms message and then posts it to screen and writes it to log file
 int identifyzone(vmath::vector in, planelist planes); //Identify brillouin zone a point bellongs to
+bool isorigin(vmath::vector in); //Is inputed vector origin?
 vectorlist removeorigin(vectorlist in); //Remove instances origin from list of vectors
 
 //-------------------------------------------------Brillouin Headers----------------------------------------------
