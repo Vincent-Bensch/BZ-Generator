@@ -197,7 +197,6 @@ typedef vector<vmath::linesegment> linesegmentlist; //List of linesegments
 typedef vector<vmath::vector> vectorlist; //List of vectors
 
 //-----------------------------------------------External Variables---------------------------------------------
-extern double intdist; //The closest distance I am willing to call an intersection(Not sure if this will come up but just in case)
 extern string logloc; //Sting holding the filename of the log file
 extern vmath::vector origin; //Vector at 0,0,0
 

@@ -1,7 +1,6 @@
 #include "Header.h"
 
 //---------------------------------------------------Variables--------------------------------------------------
-double intdist;
 string logloc;
 vmath::vector origin(0, 0, 0); //Vector at 0,0,0
 
@@ -20,7 +19,7 @@ vmath::linesegment::linesegment() {} //Function header for default constructor
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init(){ //Initializing global variables
-	intdist = 0.0001;
+	
 }
 
 string timestamp() { //Returns YYYY-MM-DD hh:mm:ss
