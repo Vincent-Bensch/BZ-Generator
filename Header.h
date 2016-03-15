@@ -9,6 +9,7 @@
 #include <ctime> //For Timer
 #include <vector> //For lists
 #include <algorithm> //For seek and destroy
+#include <map> //For dictionaries
 
 using namespace std; //I'm lazy about typing std:: everywhere
 
