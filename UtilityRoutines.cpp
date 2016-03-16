@@ -2,6 +2,7 @@
 
 //---------------------------------------------------Variables--------------------------------------------------
 string logloc;
+string outloc;
 vmath::vector origin(0, 0, 0); //Vector at 0,0,0
 
 //--------------------------------------------------Constructors------------------------------------------------
@@ -42,6 +43,18 @@ void report(string in, bool file = true, bool screen = true) { //Timestamps mess
 	if (screen) { //If screen print is requested
 		cout << out << endl; //Write message to screen
 	}
+}
+
+void writepolygon(vectorlist in, int zone) { //Write a polygon to a .obj file
+	filebuf outfile; //Create file buffer
+	outfile.open(outloc + " " + str(zone) + ".obj", ios::out); //Open file buffer
+	ostream outstream(&outfile); //Assign file buffer to stream
+
+	outstream << "f"; //Line header for polygon
+	for (vectorlist::size_type i = 0; i != in.size(); i++) { outstream << " " << in[i].i << "/" << in[i].j << "/" << in[i].k; } //Add all points in the input list to the file
+	outstream << "\n"; //End line
+
+	outfile.close(); //Close file buffer
 }
 
 int identifyzone(vmath::vector in, planelist planes) { //Identify brillouin zone a point belongs to

@@ -200,6 +200,7 @@ typedef vector<linelist> linelistlist; //List of line lists, so they can be grou
 
 //-----------------------------------------------External Variables---------------------------------------------
 extern string logloc; //Sting holding the filename of the log file
+extern string outloc; //String holding the base name for data output
 extern vmath::vector origin; //Vector at 0,0,0
 
 //--------------------------------------------------Utility Headers-----------------------------------------------
