@@ -207,6 +207,7 @@ extern vmath::vector origin; //Vector at 0,0,0
 void init(); //Setting global variable values
 string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
 void report(string in, bool file, bool screen); //Timestamps message and then posts it to screen and writes it to log file
+void writepolygon(vectorlist in, int zone); //Write a polygon to a .obj file
 int identifyzone(vmath::vector in, planelist planes); //Identify Brillouin zone a point belongs to
 bool isorigin(vmath::vector in); //Is inputted vector origin?
 vectorlist removeorigin(vectorlist in); //Remove instances origin from list of vectors
