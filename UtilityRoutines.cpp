@@ -57,7 +57,7 @@ void writepolygon(vectorlist in, int zone) { //Write a polygon to a .obj file
 	outfile.close(); //Close file buffer
 }
 
-int identifyzone(vmath::vector in, planelist planes) { //Identify brillouin zone a point belongs to
+int identifyzone(vmath::vector in, planelist planes) { //Identify Brillouin zone a point belongs to
 	int out = 0; //Starting in zone 0, because all my points are going to be on the edge of the zone, artificially inflating the zone count
 	vmath::linesegment segment(origin, in); //Create line segment from the origin to the point being tested
 	for (planelist::size_type i = 0; i != planes.size(); i++) { if (segment.intersect(planes[i])) { out++; } } //While iterating over planes, if current plane intersects segment, increment zone by 1
