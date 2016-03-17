@@ -29,7 +29,7 @@ string timestamp() { //Returns YYYY-MM-DD hh:mm:ss
 	return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(1 + ltm->tm_hour) + ":" + str(1 + ltm->tm_min) + ":" + str(1 + ltm->tm_sec);
 }
 
-void report(string in, bool file = true, bool screen = true) { //Timestamps message and then posts it to screen and writes it to log file
+void report(string in, bool file, bool screen) { //Timestamps message and then posts it to screen and writes it to log file
 	string out = timestamp() + "	" + in; //Timestamp message
 
 	if (file) { //If write to file is requested
