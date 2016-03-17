@@ -109,10 +109,10 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 		}
 
 		bool equals(line in) { return (dir.equals(in.dir) && loc.equals(in.loc)); } //Compares all elements to determine if two lines are identical
-
+		
 	private:
-		static double ta; //These two variables are calculated to determine if there is an intersection, but are also needed to calculate the intersection point
-		static double tb;
+		double ta; //These two variables are calculated to determine if there is an intersection, but are also needed to calculate the intersection point
+		double tb;
 	};
 
 	class plane { //Class for a plane defined by a position and a normal vector 
