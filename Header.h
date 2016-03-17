@@ -220,5 +220,6 @@ linesegmentlist makelinesegmentsfromlattice(vectorlist in); //Takes a list of li
 planelist makebisectorplanes(linesegmentlist in); //Takes a list of line segments, and outputs a list of planes bisecting those line segments
 linelistlist makelinesfromplanes(planelist in); //Takes a list of planes and returns the lines formed by intersection of those planes grouped by plane
 vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
+void linesintopolygons(linelistlist in, planelist planes, int maxzone); //Final stage. Takes a list of lines sorted by planes, a list of planes and the max zone I care about, and then exports the resulting polygons
 
 #endif
