@@ -20,7 +20,7 @@ vmath::linesegment::linesegment() {} //Function header for default constructor
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init(){ //Initializing global variables
-	
+	logloc = "Log.txt";
 }
 
 string timestamp() { //Returns YYYY-MM-DD hh:mm:ss

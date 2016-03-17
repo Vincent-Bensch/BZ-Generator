@@ -225,4 +225,7 @@ linelistlist makelinesfromplanes(planelist in); //Takes a list of planes and ret
 vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsorted line-segments and organizes them into a sorted vectorlist that can be exported as a polygon
 void linesintopolygons(linelistlist in, planelist planes, int maxzone); //Final stage. Takes a list of lines sorted by planes, a list of planes and the max zone I care about, and then exports the resulting polygons
 
+//----------------------------------------------------Source Headers-----------------------------------------------
+void ui(); //Header for user interface
+
 #endif
