@@ -124,26 +124,24 @@ vectorlist makepolygon(linesegmentlist in) { //Takes a list of filtered but unso
 	return out; //Return output list
 }
 
-void linesintopolygons(linelistlist in, planelist planes, int maxzone) {
-	map<int, vectorlist> linesegmentassembly;
-	map<int, linesegmentlist> polygonassembly;
-	vmath::vector temppoint;
-	int tempzone;
+void linesintopolygons(linelistlist in, planelist planes, int maxzone) { //Final stage. Takes a list of lines sorted by planes, a list of planes and the max zone I care about, and then exports the resulting polygons
+	map<int, vectorlist> linesegmentassembly; //Dictionary for assembling line segments
+	map<int, linesegmentlist> polygonassembly; //Dictionary for assembling polygons
+	vmath::vector temppoint; //Variable for temporary point storage
+	int tempzone; //Variable for temporary point zone storage
 
-	for (linelistlist::size_type i = 0; i != in.size(); i++) {
-		for (linelist::size_type j = 0; j != in[i].size(); j++) {
-			for (linelist::size_type k = 0; k != in[i].size(); k++) {
-				if (j != k && in[i][j].intersect(in[i][k])) {
-					temppoint = in[i][j].intersection(in[i][k]);
-					tempzone = identifyzone(temppoint, planes);
-					if (tempzone <= maxzone) { linesegmentassembly[tempzone].push_back(temppoint); }
+	for (linelistlist::size_type i = 0; i != in.size(); i++) { //For all the line lists in the input line list list
+		for (linelist::size_type j = 0; j != in[i].size(); j++) { //For all the lines in the current line list
+			for (linelist::size_type k = 0; k != in[i].size(); k++) { //For all the lines in the current line list
+				if (j != k && in[i][j].intersect(in[i][k])) { //If the lines do not intersect and are not the same line
+					temppoint = in[i][j].intersection(in[i][k]); //Create a point from the intersection
+					tempzone = identifyzone(temppoint, planes); //Identify the zone of that point
+					if (tempzone <= maxzone) { linesegmentassembly[tempzone].push_back(temppoint); } //If the zone is one that I care about, add to dictionary1[zone]=list of points
 				}
 			}
-			for (auto const &ent1 : linesegmentassembly) { polygonassembly[ent1.first].push_back(vmath::linesegment(ent1.second[0], ent1.second[1])); }
+			for (auto const &ent1 : linesegmentassembly) { polygonassembly[ent1.first].push_back(vmath::linesegment(ent1.second[0], ent1.second[1])); } //For all of the entries in dictionary 1, make a line segment from the two entries that should be there and add it to dictionary2[zone]=list of line segments
+			linesegmentassembly.clear(); //Clear dictionary1
 		}
-		for (auto const &ent1 : polygonassembly) { writepolygon(makepolygon(ent1.second), ent1.first); }
+		for (auto const &ent1 : polygonassembly) { writepolygon(makepolygon(ent1.second), ent1.first); } //For all the entries in the dictionary2, take the list of line segments, assemble them into a polygon and export it
 	}
 }
-
-//ent1.first is key
-//ent1.second is data
