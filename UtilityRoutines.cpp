@@ -34,7 +34,7 @@ void report(string in, bool file, bool screen) { //Timestamps message and then p
 
 	if (file) { //If write to file is requested
 		filebuf outfile; //Create file buffer
-		outfile.open(logloc, ios::out); //Open file buffer
+		outfile.open(logloc, ios_base::app | ios_base::out); //Open file buffer
 		ostream outstream(&outfile); //Assign file buffer to stream
 		outstream << out << "\n"; //Write message to stream
 		outfile.close(); //Close file buffer
@@ -47,7 +47,7 @@ void report(string in, bool file, bool screen) { //Timestamps message and then p
 
 void writepolygon(vectorlist in, int zone) { //Write a polygon to a .obj file
 	filebuf outfile; //Create file buffer
-	outfile.open(outloc + " " + str(zone) + ".obj", ios::out); //Open file buffer
+	outfile.open(outloc + " " + str(zone) + ".obj", ios_base::app | ios_base::out); //Open file buffer
 	ostream outstream(&outfile); //Assign file buffer to stream
 
 	outstream << "f"; //Line header for polygon
