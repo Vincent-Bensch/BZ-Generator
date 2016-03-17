@@ -41,4 +41,6 @@ void ui() {
 
 	linesintopolygons(uilinesbyplanes, uiplanelist, maximumzone);
 	report("Done");
+
+	cin.ignore();
 }
