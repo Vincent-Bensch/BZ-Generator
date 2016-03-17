@@ -123,3 +123,27 @@ vectorlist makepolygon(linesegmentlist in) { //Takes a list of filtered but unso
 
 	return out; //Return output list
 }
+
+void linesintopolygons(linelistlist in, planelist planes, int maxzone) {
+	map<int, vectorlist> linesegmentassembly;
+	map<int, linesegmentlist> polygonassembly;
+	vmath::vector temppoint;
+	int tempzone;
+
+	for (linelistlist::size_type i = 0; i != in.size(); i++) {
+		for (linelist::size_type j = 0; j != in[i].size(); j++) {
+			for (linelist::size_type k = 0; k != in[i].size(); k++) {
+				if (j != k && in[i][j].intersect(in[i][k])) {
+					temppoint = in[i][j].intersection(in[i][k]);
+					tempzone = identifyzone(temppoint, planes);
+					if (tempzone <= maxzone) { linesegmentassembly[tempzone].push_back(temppoint); }
+				}
+			}
+			for (auto const &ent1 : linesegmentassembly) { polygonassembly[ent1.first].push_back(vmath::linesegment(ent1.second[0], ent1.second[1])); }
+		}
+		for (auto const &ent1 : polygonassembly) { writepolygon(makepolygon(ent1.second), ent1.first); }
+	}
+}
+
+//ent1.first is key
+//ent1.second is data
