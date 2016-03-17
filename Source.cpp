@@ -28,16 +28,16 @@ void ui() {
 	if (latticetype == "PC") { uilatticepoints = makePClattice(maxlatticedistance, latticestep); }
 	if (latticetype == "FCC") { uilatticepoints = makeFCClattice(maxlatticedistance, latticestep); }
 	if (latticetype == "BCC") { uilatticepoints = makeBCClattice(maxlatticedistance, latticestep); }
-	report("Lattice points generated");
+	report("Lattice points generated: " + str(uilatticepoints.size()));
 
 	uilinesegmentlist = makelinesegmentsfromlattice(uilatticepoints);
-	report("Line segments generated from lattice");
+	report("Line segments generated from lattice: " + str(uilinesegmentlist.size()));
 
 	uiplanelist = makebisectorplanes(uilinesegmentlist);
-	report("Bisector planes generated");
+	report("Bisector planes generated: " + str(uiplanelist.size()));
 
 	uilinesbyplanes = makelinesfromplanes(uiplanelist);
-	report("Lines generated on planes");
+	report("Lines generated on planes: " + str(uilinesbyplanes.size()));
 
 	linesintopolygons(uilinesbyplanes, uiplanelist, maximumzone);
 	report("Done");
