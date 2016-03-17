@@ -70,3 +70,24 @@ vectorlist removeorigin(vectorlist in) { //Remove instances origin from list of 
 	in.erase(remove_if(in.begin(), in.end(), isorigin), in.end()); //Remove all elements that cause isorigin to return true
 	return in; //Return input list
 }
+
+string requeststring(string ask) { //Prints ask string and then returns user input as a string
+	string out; //Create input string
+	cout << ask << ": "; //Print ask string
+	cin >> out; //Take input
+	return out; //Return input
+}
+
+int requestint(string ask) { //Prints ask string and then returns user input as a int
+	int out; //Create input int
+	cout << ask << ": "; //Print ask string
+	cin >> out; //Take input
+	return out; //Return input
+}
+
+double requestdouble(string ask) { //Prints ask string and then returns user input as a double
+	double out; //Create input double
+	cout << ask << ": "; //Print ask string
+	cin >> out; //Take input
+	return out; //Return input
+}

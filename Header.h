@@ -211,6 +211,9 @@ void writepolygon(vectorlist in, int zone); //Write a polygon to a .obj file
 int identifyzone(vmath::vector in, planelist planes); //Identify Brillouin zone a point belongs to
 bool isorigin(vmath::vector in); //Is inputted vector origin?
 vectorlist removeorigin(vectorlist in); //Remove instances origin from list of vectors
+string requeststring(string ask);  //Prints ask string and then returns user input as a string
+int requestint(string ask);  //Prints ask string and then returns user input as a int
+double requestdouble(string ask);  //Prints ask string and then returns user input as a double
 
 //-------------------------------------------------Brillouin Headers----------------------------------------------
 vectorlist makePClattice(double max, double step); //Creates a Primitive Cube lattice
