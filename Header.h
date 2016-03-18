@@ -77,7 +77,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes and var
 				k*d);
 		}
 
-		vector devide(double d) { //a.divide(b) returns vector a will all elements divided by double b
+		vector divide(double d) { //a.divide(b) returns vector a will all elements divided by double b
 			return vector(
 				i / d,
 				j / d,
@@ -198,7 +198,7 @@ typedef vector<vmath::linesegment> linesegmentlist; //List of line segments
 typedef vector<vmath::vector> vectorlist; //List of vectors
 typedef vector<linelist> linelistlist; //List of line lists, so they can be grouped by plane
 
-//-----------------------------------------------External Variables---------------------------------------------
+//-------------------------------------------------External Variables---------------------------------------------
 extern string logloc; //Sting holding the filename of the log file
 extern string outloc; //String holding the base name for data output
 extern vmath::vector origin; //Vector at 0,0,0
