@@ -6,6 +6,7 @@
 #include <iostream> //For obvious reasons
 #include <sstream> //For str( x )
 #include <fstream> //For file io
+#include <windows.h> //For creating directories
 #include <ctime> //For Timer
 #include <vector> //For lists
 #include <algorithm> //For seek and destroy
@@ -199,13 +200,14 @@ typedef vector<vmath::vector> vectorlist; //List of vectors
 typedef vector<linelist> linelistlist; //List of line lists, so they can be grouped by plane
 
 //-------------------------------------------------External Variables---------------------------------------------
+extern string folder; //The folder into which the output gets pushed
 extern string logloc; //Sting holding the filename of the log file
 extern string outloc; //String holding the base name for data output
 extern vmath::vector origin; //Vector at 0,0,0
 
 //--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Setting global variable values
-string timestamp(); //Returns YYYY-MM-DD hh:mm:ss
+string timestamp(bool file = false); //Returns YYYY-MM-DD hh:mm:ss
 void report(string in, bool file = true, bool screen = true); //Timestamps message and then posts it to screen and writes it to log file
 void writepolygon(vectorlist in, int zone); //Write a polygon to a .obj file
 int identifyzone(vmath::vector in, planelist planes); //Identify Brillouin zone a point belongs to

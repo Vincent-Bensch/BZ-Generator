@@ -1,6 +1,7 @@
 #include "Header.h"
 
 //---------------------------------------------------Variables--------------------------------------------------
+string folder;
 string logloc;
 string outloc;
 vmath::vector origin(0, 0, 0); //Vector at 0,0,0
@@ -20,13 +21,16 @@ vmath::linesegment::linesegment() {} //Function header for default constructor
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init(){ //Initializing global variables
-	logloc = "Log.txt";
+	folder = timestamp(true);
+	CreateDirectory(wstring(folder.begin(), folder.end()).c_str(), NULL);
+	logloc = folder + "/Log.txt";
 }
 
-string timestamp() { //Returns YYYY-MM-DD hh:mm:ss
+string timestamp(bool file) { //Returns YYYY-MM-DD hh:mm:ss
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
-	return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(1 + ltm->tm_hour) + ":" + str(1 + ltm->tm_min) + ":" + str(1 + ltm->tm_sec);
+	if (file) { return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(ltm->tm_hour) + "-" + str(ltm->tm_min) + "-" + str(ltm->tm_sec); }
+	else { return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(ltm->tm_hour) + ":" + str(ltm->tm_min) + ":" + str(ltm->tm_sec); }
 }
 
 void report(string in, bool file, bool screen) { //Timestamps message and then posts it to screen and writes it to log file
