@@ -21,16 +21,29 @@ vmath::linesegment::linesegment() {} //Function header for default constructor
 
 //--------------------------------------------------Sub Routines------------------------------------------------
 void init(){ //Initializing global variables
-	folder = timestamp(true);
-	CreateDirectory(wstring(folder.begin(), folder.end()).c_str(), NULL);
-	logloc = folder + "/Log.txt";
+	folder = timestamp(true); //The global folder sting is equal to YYYY-MM-DD hhmm
+	CreateDirectory(wstring(folder.begin(), folder.end()).c_str(), NULL); //Create a directory named the contents of the folder variable
+	logloc = folder + "/Log.txt"; //Put the log file in our folder
 }
 
-string timestamp(bool file) { //Returns YYYY-MM-DD hh:mm:ss
-	time_t now = time(0);
-	tm *ltm = localtime(&now);
-	if (file) { return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(ltm->tm_hour) + "-" + str(ltm->tm_min) + "-" + str(ltm->tm_sec); }
-	else { return str(1900 + ltm->tm_year) + "-" + str(1 + ltm->tm_mon) + "-" + str(ltm->tm_mday) + " " + str(ltm->tm_hour) + ":" + str(ltm->tm_min) + ":" + str(ltm->tm_sec); }
+string twodigit(int in) { //Takes a one or two digit integer and returns a sting of the int. If the int only has one digit, a 0 is added to compensate
+	string out = str(in); //Make a sting of the input integer
+	if (out.length() == 1) { out = "0" + out; } //If the string is one character long, add a 0 before it
+	return out; //Return string
+}
+
+string timestamp(bool file) { //Create a timestamp either for a filename or log content
+	time_t now = time(0); //Create placeholder at current time
+	tm *ltm = localtime(&now); //Point to it
+	string YYYY = str(1900 + ltm->tm_year); //Create stings of all relevant components for timestamp
+	string MM = twodigit(1 + ltm->tm_mon);
+	string DD = twodigit(ltm->tm_mday);
+	string hh = twodigit(ltm->tm_hour);
+	string mm = twodigit(ltm->tm_min);
+	string ss = twodigit(ltm->tm_sec);
+
+	if (file) { return YYYY + "-" + MM + "-" + DD + " " + hh + mm; } //Returns YYYY-MM-DD hhmm if timestamp is meant for a filename 
+	else { return YYYY + "-" + MM + "-" + DD + " " + hh + ":" + mm + ":" + ss; } //Returns YYYY-MM-DD hh:mm:ss if not
 }
 
 void report(string in, bool file, bool screen) { //Timestamps message and then posts it to screen and writes it to log file
