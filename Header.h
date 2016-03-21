@@ -18,7 +18,7 @@ using namespace std; //I'm lazy about typing std:: everywhere
 	(ostringstream() << dec << x)).str() //No idea how this works, got it off stack exchange
 
 //----------------------------------------------------Classes----------------------------------------------------
-namespace vmath { //To avoid name conflicts, I put all my custom classes and variable types in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistent as I like!
+namespace vmath { //To avoid name conflicts, I put all my custom classes in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistent as I like!
 	class linesegment; //Declaring line segment class here so that plane class can access it before definition
 
 	class timer {
