@@ -17,7 +17,7 @@ using namespace std; //I'm lazy about typing std:: everywhere
 #define str( x ) dynamic_cast< ostringstream & >( \
 	(ostringstream() << dec << x)).str() //No idea how this works, got it off stack exchange
 
-//----------------------------------------------------Classes----------------------------------------------------
+//-------------------------------------------------Vmath Headers-------------------------------------------------
 namespace vmath { //To avoid name conflicts, I put all my custom classes in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistent as I like!
 	class timer;
 	class vector;
@@ -43,21 +43,13 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		vector(); //Function header for default constructor
 
 		double magnitude(); //Pythagorean theorem to get vector magnitude
-
 		vector normalize(); //Return a unit vector pointing the same direction as original vector, by dividing all components by magnitude
-
 		double dot(vector in); //a.dot(b) returns the dot product of a with b
-
 		vector cross(vector in); // a.cross(b) returns the cross product of a with b
-
 		vector add(vector in); //a.add(b) returns vector a plus vector b
-
 		vector subtract(vector in); //a.subtract(b) returns vector a minus vector b
-
 		vector multiply(double d); //a.multiply(b) returns vector a with all elements multiplied by double b
-
-		vector divide(double d); //a.divide(b) returns vector a will all elements divided by double b
-
+		vector divide(double d); //a.divide(b) returns vector a will all elements divided by double d
 		bool equals(vector in); //Compares all elements to determine if two vectors are identical
 	};
 
@@ -70,9 +62,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		line(); //Function header for default constructor
 
 		bool intersect(line in); //Determines if two lines intersect, see maths folder for details
-
 		vector intersection(line in); //Finds the intersection point for two lines, see maths folder for details
-
 		bool equals(line in); //Compares all elements to determine if two lines are identical
 
 	private:
@@ -90,18 +80,13 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		plane(); //Function header for default constructor
 
 		bool intersect(plane in); //If the normal vectors are parallel the planes do not intersect
-
 		line intersection(plane in); //Returns line of intersection between two lines see maths folder for details
-
 		bool intersect(linesegment in); //Tests for a intersection between a line segment and a plane. See maths folder for details
-
 		bool equals(plane in); //Compares all elements to determine if two planes are identical
 
 	private:
 		vector xintersection(plane in); //Part of plane-plane intersection algorithm
-
 		vector yintersection(plane in); //Part of plane-plane intersection algorithm
-
 		vector zintersection(plane in); //Part of plane-plane intersection algorithm
 	};
 
@@ -113,11 +98,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		linesegment(); //Function header for default constructor
 
 		vector midpoint(); //Return a position vector marking the midpoint of the line segment
-
 		double length(); //Pythagorean theorem for the length of the line segment
-
 		bool intersect(plane in); //Tests for a intersection between a line segment and a plane. See maths folder for details
-
 		bool equals(linesegment in); //Compares all elements to determine if two line segments are identical
 	};
 
