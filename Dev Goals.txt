@@ -1,2 +1,1 @@
-Attach date/time to log and output files
 Support config file
