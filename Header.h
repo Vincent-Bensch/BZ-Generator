@@ -208,7 +208,7 @@ extern vmath::vector origin; //Vector at 0,0,0
 //--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Setting global variable values
 string twodigit(int in); //Takes a one or two digit integer and returns a sting of the int. If the int only has one digit, a 0 is added to compensate
-string timestamp(bool file = false); //Returns YYYY-MM-DD hh:mm:ss
+string timestamp(bool file = false); //Create a timestamp either for a filename or log content
 void report(string in, bool file = true, bool screen = true); //Timestamps message and then posts it to screen and writes it to log file
 void writepolygon(vectorlist in, int zone); //Write a polygon to a .obj file
 int identifyzone(vmath::vector in, planelist planes); //Identify Brillouin zone a point belongs to
