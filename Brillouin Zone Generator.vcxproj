@@ -150,6 +150,7 @@
     <ClCompile Include="BrillouinRoutines.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="UtilityRoutines.cpp" />
+    <ClCompile Include="vmath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
