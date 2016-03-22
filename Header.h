@@ -103,6 +103,22 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		bool equals(linesegment in); //Compares all elements to determine if two line segments are identical
 	};
 
+	class configuration {
+	public:
+		string latticetype_s;
+		int latticetype_i;
+		double maxlatticedistance;
+		double latticestep;
+		int maximumzone;
+
+		configuration(string, double, double, int);
+		configuration(int, double, double, int);
+		configuration();
+
+		void output();
+		void makelatticetypeint();
+		void makelatticetypestr();
+	};
 }
 
 //----------------------------------------------Custom Variable Types--------------------------------------------
