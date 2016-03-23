@@ -13,9 +13,52 @@ vmath::line::line() {} //Default constructor for line
 vmath::linesegment::linesegment(vector a, vector b) { start = a, end = b; } //Function header for line segment populating constructor
 vmath::linesegment::linesegment() {} //Default constructor for line segment
 
-vmath::configuration::configuration(string a, double b, double c, int d) { latticetype_s = a, maxlatticedistance = b, latticestep = c, maximumzone = d; makelatticetypeint(); } //Function header for configuration populating constructor with lattice type as string
-vmath::configuration::configuration(int a, double b, double c, int d) { latticetype_i = a, maxlatticedistance = b, latticestep = c, maximumzone = d; makelatticetypestr(); } //Function header for configuration populating constructor with lattice type as int
-vmath::configuration::configuration() {}//Default constructor for configuration
+vmath::configuration::configuration(string location) { //Function header for configuration populating constructor with lattice type as string
+	report("Brillouin Zone Generator Configuration File Reader Started");
+	ifstream infile(location);
+	int a, d;
+	double b, c;
+
+	if (infile >> a >> b >> c >> d) {
+		latticetype_i = a;
+		maxlatticedistance = b;
+		latticestep = c;
+		maximumzone = d;
+	}
+
+	else {
+		report("Fail state in reading configuration file");
+	}
+
+	switch (latticetype_i) {
+	case 0:
+		latticetype_s = "PC";
+	case 1:
+		latticetype_s = "FCC";
+	case 2:
+		latticetype_s = "BCC";
+	case 3:
+		latticetype_s = "TEST";
+	default:
+		report("Fail state in configuration.makelatticetypeint()");
+	}
+} 
+
+vmath::configuration::configuration() { //Default constructor for configuration
+	report("Brillouin Zone Generator User Interface Started");
+
+	latticetype_s = requeststring("Lattice Type");
+	maxlatticedistance = requestdouble("Maximum distance from origin for Lattice Points");
+	latticestep = requestdouble("Step for Lattice Points");
+	maximumzone = requestint("Highest zone you care about");
+	system("CLS");
+
+	if (latticetype_s == "PC") { latticetype_i = 0; }
+	else if (latticetype_s == "FCC") { latticetype_i = 1; }
+	else if (latticetype_s == "BCC") { latticetype_i = 2; }
+	else if (latticetype_s == "TEST") { latticetype_i = 3; }
+	else { report("Fail state in selected lattice type"); }
+}
 
 namespace vmath { //To avoid name conflicts, I put all my custom classes in the vmath namespace. Sort of negates my comment on using namespace std, but this is my code and I can be as inconsistent as I like!
 
@@ -146,33 +189,41 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 	bool linesegment::equals(linesegment in) { return((start.equals(in.start) && end.equals(in.end)) || (start.equals(in.end) && end.equals(in.start))); } //Compares all elements to determine if two line segments are identical
 																																						   
 	//--------------------------------------------------Configuration------------------------------------------------
-	void configuration::output(){ //Report current configuration
+	void configuration::display(){ //Report current configuration
 		report("Parameters: \n			Lattice Type: " + latticetype_s
 			+ "\n			Maximum distance from origin for Lattice Points: " + str(maxlatticedistance)
 			+ "\n			Step for Lattice Points: " + str(latticestep)
 			+ "\n			Highest zone you care about: " + str(maximumzone));
 	}
 
-	void configuration::makelatticetypeint() { //Match latticetype_i to latticetype_s
-		if (latticetype_s == "PC") { latticetype_i = 0; }
-		else if (latticetype_s == "FCC") { latticetype_i = 1; }
-		else if (latticetype_s == "BCC") { latticetype_i = 2; }
-		else if (latticetype_s == "TEST") { latticetype_i = 3; }
-		else { report("Fail state in configuration.makelatticetypeint()"); }
-	}
+	void configuration::run() {
+		vectorlist uilatticepoints;
+		linesegmentlist uilinesegmentlist;
+		planelist uiplanelist;
+		linelistlist uilinesbyplanes;
 
-	void configuration::makelatticetypestr() { //Match latticetype_s to latticetype_i
 		switch (latticetype_i) {
 		case 0:
-			latticetype_s = "PC";
+			uilatticepoints = makePClattice(maxlatticedistance, latticestep);
 		case 1:
-			latticetype_s = "FCC";
+			uilatticepoints = makeFCClattice(maxlatticedistance, latticestep);
 		case 2:
-			latticetype_s = "BCC";
-		case 3:
-			latticetype_s = "TEST";
-		default:
-			report("Fail state in configuration.makelatticetypeint()");
+			uilatticepoints = makeBCClattice(maxlatticedistance, latticestep);
+		//case 3:
+			//Test case
 		}
+		report("Lattice points generated: " + str(uilatticepoints.size()));
+
+		uilinesegmentlist = makelinesegmentsfromlattice(uilatticepoints);
+		report("Line segments generated from lattice: " + str(uilinesegmentlist.size()));
+
+		uiplanelist = makebisectorplanes(uilinesegmentlist);
+		report("Bisector planes generated: " + str(uiplanelist.size()));
+
+		uilinesbyplanes = makelinesfromplanes(uiplanelist);
+		report("Lines generated on planes: " + str(uilinesbyplanes.size()));
+
+		linesintopolygons(uilinesbyplanes, uiplanelist, maximumzone);
+		report("Done");
 	}
 }

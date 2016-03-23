@@ -24,6 +24,7 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 	class line;
 	class plane;
 	class linesegment;
+	class configuration;
 
 	class timer {
 	private:
@@ -111,13 +112,11 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		double latticestep;
 		int maximumzone;
 
-		configuration(string, double, double, int);
-		configuration(int, double, double, int);
+		configuration(string);
 		configuration();
 
-		void output();
-		void makelatticetypeint();
-		void makelatticetypestr();
+		void display();
+		void run();
 	};
 }
 
@@ -158,6 +157,6 @@ vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsor
 void linesintopolygons(linelistlist in, planelist planes, int maxzone); //Final stage. Takes a list of lines sorted by planes, a list of planes and the max zone I care about, and then exports the resulting polygons
 
 //----------------------------------------------------Source Headers-----------------------------------------------
-void ui(); //Header for user interface
+
 
 #endif
