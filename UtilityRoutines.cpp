@@ -4,6 +4,9 @@
 string folder;
 string logloc;
 string outloc;
+string configloc;
+int dispspacing;
+string space;
 vmath::vector origin(0, 0, 0); //Vector at 0,0,0
 
 
@@ -13,6 +16,22 @@ void init(){ //Initializing global variables
 	folder = timestamp(true); //The global folder sting is equal to YYYY-MM-DD hhmm
 	CreateDirectory(wstring(folder.begin(), folder.end()).c_str(), NULL); //Create a directory named the contents of the folder variable
 	logloc = folder + "/Log.txt"; //Put the log file in our folder
+	configloc = "test.config";
+	dispspacing = 35;
+	space = " ";
+}
+
+string spaceout(stringlist in) {
+	string out;
+	for (stringlist::size_type i = 0; i != in.size(); i++) { 
+		out += in[i];
+		if (i != in.size() - 1) {
+			for (int j = 0; j != dispspacing - in[i].size(); j++) {
+				out += " ";
+			}
+		}
+	}
+	return out;
 }
 
 string twodigit(int in) { //Takes a one or two digit integer and returns a sting of the int. If the int only has one digit, a 0 is added to compensate

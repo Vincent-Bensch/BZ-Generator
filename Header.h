@@ -1,6 +1,7 @@
 #pragma once
 #ifndef HEADER_H_
 #define HEADER_H_ //To make sharing subroutines and variables across .cpps easier
+#pragma comment(lib, "user32")
 
 //----------------------------------------------Includes and Defines---------------------------------------------
 #include <iostream> //For obvious reasons
@@ -11,6 +12,8 @@
 #include <vector> //For lists
 #include <algorithm> //For seek and destroy
 #include <map> //For dictionaries
+#include <cstdlib> //For crashing in failstate
+#include <string> //For space multiplication
 
 using namespace std; //I'm lazy about typing std:: everywhere
 
@@ -112,11 +115,12 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		double latticestep;
 		int maximumzone;
 
-		configuration(string);
 		configuration();
+		configuration(int, double, double, int, string);
 
-		void display();
+		void full_display();
 		void run();
+		void write();
 	};
 }
 
@@ -126,15 +130,20 @@ typedef vector<vmath::line> linelist; //List of lines
 typedef vector<vmath::linesegment> linesegmentlist; //List of line segments
 typedef vector<vmath::vector> vectorlist; //List of vectors
 typedef vector<linelist> linelistlist; //List of line lists, so they can be grouped by plane
+typedef vector<vmath::configuration> configurationlist; //List of configurations
+typedef vector<string> stringlist; //List of strings
 
 //-------------------------------------------------External Variables---------------------------------------------
 extern string folder; //The folder into which the output gets pushed
 extern string logloc; //Sting holding the filename of the log file
 extern string outloc; //String holding the base name for data output
+extern string configloc; //String holding the name of the configuration file
+extern int dispspacing;
 extern vmath::vector origin; //Vector at 0,0,0
 
 //--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Setting global variable values
+string spaceout(stringlist in);
 string twodigit(int in); //Takes a one or two digit integer and returns a sting of the int. If the int only has one digit, a 0 is added to compensate
 string timestamp(bool file = false); //Create a timestamp either for a filename or log content
 void report(string in, bool file = true, bool screen = true); //Timestamps message and then posts it to screen and writes it to log file
@@ -157,6 +166,6 @@ vectorlist makepolygon(linesegmentlist in); //Takes a list of filtered but unsor
 void linesintopolygons(linelistlist in, planelist planes, int maxzone); //Final stage. Takes a list of lines sorted by planes, a list of planes and the max zone I care about, and then exports the resulting polygons
 
 //----------------------------------------------------Source Headers-----------------------------------------------
-
+void ui();
 
 #endif
