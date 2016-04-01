@@ -1,6 +1,7 @@
 #pragma once
 #ifndef HEADER_H_
 #define HEADER_H_ //To make sharing subroutines and variables across .cpps easier
+//#pragma comment(lib, "user32")
 
 //----------------------------------------------Includes and Defines---------------------------------------------
 #include <iostream> //For obvious reasons
