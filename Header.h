@@ -1,7 +1,6 @@
 #pragma once
 #ifndef HEADER_H_
 #define HEADER_H_ //To make sharing subroutines and variables across .cpps easier
-//#pragma comment(lib, "user32")
 
 //----------------------------------------------Includes and Defines---------------------------------------------
 #include <iostream> //For obvious reasons
@@ -143,6 +142,7 @@ extern vmath::vector origin; //Vector at 0,0,0
 
 //--------------------------------------------------Utility Headers-----------------------------------------------
 void init(); //Setting global variable values
+void togglescreen(); //Toggle fullscreen
 string spaceout(stringlist in);
 string twodigit(int in); //Takes a one or two digit integer and returns a sting of the int. If the int only has one digit, a 0 is added to compensate
 string timestamp(bool file = false); //Create a timestamp either for a filename or log content

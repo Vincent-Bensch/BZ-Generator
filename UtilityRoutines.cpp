@@ -21,6 +21,8 @@ void init(){ //Initializing global variables
 	space = " ";
 }
 
+void togglescreen(){ ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000); }
+
 string spaceout(stringlist in) {
 	string out;
 	for (stringlist::size_type i = 0; i != in.size(); i++) { 

@@ -178,8 +178,8 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 			uilatticepoints = makeFCClattice(maxlatticedistance, latticestep);
 		case 2:
 			uilatticepoints = makeBCClattice(maxlatticedistance, latticestep);
-		//case 3:
-			//Test case
+		case 3:
+			report("Test Case");
 		}
 		report("Lattice points generated: " + str(uilatticepoints.size()));
 
