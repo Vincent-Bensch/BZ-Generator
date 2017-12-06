@@ -171,16 +171,14 @@ namespace vmath { //To avoid name conflicts, I put all my custom classes in the 
 		planelist uiplanelist;
 		linelistlist uilinesbyplanes;
 
-		switch (latticetype_i) {
-		case 0:
-			uilatticepoints = makePClattice(maxlatticedistance, latticestep);
-		case 1:
-			uilatticepoints = makeFCClattice(maxlatticedistance, latticestep);
-		case 2:
-			uilatticepoints = makeBCClattice(maxlatticedistance, latticestep);
-		case 3:
-			report("Test Case");
-		}
+		report(str(latticetype_i));
+
+		if (latticetype_i == 0) { uilatticepoints = makePClattice(maxlatticedistance, latticestep); }
+		else if (latticetype_i == 1) { uilatticepoints = makeFCClattice(maxlatticedistance, latticestep); }
+		else if (latticetype_i == 2) { uilatticepoints = makeBCClattice(maxlatticedistance, latticestep); }
+		else if (latticetype_i == 3) { report("Test Case"); exit(0);}//There is currently nothing in the test case for the rest of the program to operate on.
+		else { report("FAIL STATE"); exit(0);}
+
 		report("Lattice points generated: " + str(uilatticepoints.size()));
 
 		uilinesegmentlist = makelinesegmentsfromlattice(uilatticepoints);
