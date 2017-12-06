@@ -21,7 +21,7 @@ void init(){ //Initializing global variables
 	space = " ";
 }
 
-void togglescreen(){ ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000); }
+void togglescreen(){ ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000); } //Toggle full screen
 
 string spaceout(stringlist in) {
 	string out;
